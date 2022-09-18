@@ -1,0 +1,38 @@
+{
+    "name": "01-base-project",
+    "version": "1.0.0",
+    "description": "",
+    "main": "build/main.js",
+    "type": "module",
+    "scripts": {
+        "build": "babel src --out-dir build",
+        "prod": "node .",
+        "start": "babel-node src/main.js",
+        "dev": "nodemon --exec babel-node -- src/main.js",
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "babel": "babel-node "
+    },
+    "author": "Juanjofp",
+    "license": "ISC",
+    "devDependencies": {
+        "@babel/cli": "^7.17.6",
+        "@babel/core": "^7.17.8",
+        "@babel/eslint-parser": "^7.17.0",
+        "@babel/node": "^7.16.8",
+        "@babel/preset-env": "^7.16.11",
+        "eslint": "^8.11.0",
+        "nodemon": "^2.0.15",
+        "prettier": "^2.6.0"
+    },
+    "babel": {
+        "presets": [
+            "@babel/preset-env"
+        ]
+    },
+    "dependencies": {
+        "chalk": "^5.0.1",
+        "inquirer": "^8.2.1",
+        "isomorphic-fetch": "^3.0.0",
+        "minimist": "^1.2.6"
+    }
+}

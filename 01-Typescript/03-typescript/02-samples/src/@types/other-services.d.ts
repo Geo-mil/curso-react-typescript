@@ -1,0 +1,3 @@
+interface MyCustomService {
+    serviceId(): string;
+}

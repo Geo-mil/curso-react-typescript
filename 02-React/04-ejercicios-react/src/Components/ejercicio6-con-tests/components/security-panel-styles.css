@@ -1,0 +1,13 @@
+.ContainerPanel {
+    display: flex;
+    flex-direction: column;
+}
+
+.MessageAccess {
+
+}
+
+.ButtonAccess {
+    margin: 8px;
+}
+
