@@ -1,0 +1,9 @@
+.img-avatar {
+  width: 400px;
+  height: 400px;
+}
+.show-user {
+  display: flex;
+  flex-direction: column;
+  font-style: italic;
+}
