@@ -10,11 +10,17 @@ import GithubPerfil from './Components/githook/github'
 import GithooksRepo from './Components/githook/githooks';
 import { Crono } from './Components/crono/crono';
 import DatosDeNombre from './Components/githook/datosDeNombre';
+import { Calculadora } from './Components/calculadora/calculadora';
  
 function App() {
   return (
     <div className="App">
+      <div style ={{display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center'}}>
+        <Calculadora />
+        <br/>
+      </div>
       <header className="App-header">
+      
       < Crono />  
       <br/>
       <div>
