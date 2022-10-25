@@ -25,7 +25,7 @@ type ResultsState = {
   value?: number;
   operation?: Operations;
   //secondValue: number;
-  result: number;
+  result?: number;
 };
 
 function calculateReducer(
@@ -34,53 +34,69 @@ function calculateReducer(
 ) {
   switch (action.type) {
     case "SET_OPERATION":
-        state.result = 0
       return {
         ...state,
         result: state.result,
         operation: action.payload,
-      };
+      }
     case "SET_NUMBER":
         let valor = 0
         if(state.value !== undefined){
             valor = state.value
         }
 
+        let resultado = 0
+        if(state.result !== undefined){
+          resultado = state.result
+        }
+
         if (state.operation)
         return {
-          result: (state.result*10) + action.payload,
+          result: (resultado*10) + action.payload,
           operation: state.operation,
           value: valor,
-        };
+        }
     
         return {
-            result: state.result,
-            operation: state.operation,
+            result: undefined,
+            operation: undefined,
             value: action.payload + (valor*10),
         };
       
     case "CALCULATE":
       if (typeof state.value == "number"){
+        let resultado = 0
+        if(state.result !== undefined){
+          resultado = state.result
+        }
       switch(state.operation){
         case "*" :
             return {
-                result: state.result * state.value,
+                result: resultado * state.value,
               }
         case "+" :
             return {
-                result: state.result + state.value,
+                result: resultado + state.value,
             }
         case "-" :
             return {
-                result: state.value - state.result,
+                result: state.value - resultado,
               }
         case "/" :
+            if(state.result === 0){
+              return{
+                value: 0,
+                result: undefined,
+                operation: undefined,
+                error: "DIVISION POR CERO"
+              }
+            }
             return {
-                result: state.value / state.result,
+                result: state.value / resultado,
                 }
         default:
             return { 
-                result: state.result
+                result: resultado
             }
       }
     } 
@@ -101,8 +117,8 @@ export function Calculadora() {
   console.log(result);
   const screenResult = () => {
     if (result.error) return result.error;
-    if (result.operation && result.result) return result.result
-    if (result.value) return result.value;
+    if (result.operation && (result.result !== undefined)) return result.result
+    if (result.value || (result.value === 0)) return result.value;
     return result.result;
   };
   return (
